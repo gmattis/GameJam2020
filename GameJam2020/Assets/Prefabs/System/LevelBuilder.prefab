@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1906570873184050441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1906570873184050454}
+  - component: {fileID: 1906570873184050455}
+  m_Layer: 0
+  m_Name: LevelBuilder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1906570873184050454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906570873184050441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1906570873184050455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906570873184050441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43813b376bdd344886a20d0138be42d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomsDeadEnd:
+  - {fileID: 3170832452567112495, guid: 6e72ba70819dc404abbdce772a913c14, type: 3}
+  roomsCorridor:
+  - {fileID: 3170832452567112495, guid: 45704c6b7b93c1f4e886e3db0539264a, type: 3}
+  roomsTurn:
+  - {fileID: 3170832452567112495, guid: 829edd1a52bef974d90f4470d3c552b1, type: 3}
+  roomsTee:
+  - {fileID: 3170832452567112495, guid: 3a5297fcd5e770f4f96d9ccaaf5f4903, type: 3}
+  roomsCross:
+  - {fileID: 3170832452567112495, guid: 015df3e5a678d0141acc2a2676eaa15a, type: 3}
