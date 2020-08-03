@@ -99,7 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraOffset: {x: 0, y: 0, z: 0}
-  distanceToRoom: 15
+  distanceToRoom: 20
+  bloomMinimum: 4
+  bloomMultiplier: 8
+  bloomSmoothness: 16
 --- !u!114 &3199476440655555178
 MonoBehaviour:
   m_ObjectHideFlags: 0

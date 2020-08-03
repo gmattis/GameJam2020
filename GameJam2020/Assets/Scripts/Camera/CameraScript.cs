@@ -1,17 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 public class CameraScript : MonoBehaviour
 {
     public Vector3 cameraOffset;
     public float distanceToRoom = 20f;
+    public float bloomMinimum = 4f;
+    public float bloomMultiplier = 8f;
+    public int bloomSmoothness = 16;
 
     private int colorStep = 0;
     private int step = 0;
     private AudioSource audioSource;
     private Bloom bloomLayer;
 
-    private float[] meanHistory = new float[15];
+    private float meanMultiplier;
+    private float[] meanHistory;
 
     private void Start()
     {
@@ -20,6 +26,9 @@ public class CameraScript : MonoBehaviour
         
         audioSource = MusicManager.Instance.audioSourceCombat;
         gameObject.GetComponent<PostProcessVolume>().profile.TryGetSettings(out bloomLayer);
+
+        meanMultiplier = bloomMultiplier / Math.Max(bloomSmoothness, 2);
+        meanHistory = new float[Math.Max(bloomSmoothness - 1, 1)];
     }
 
     // Update is called once per frame
@@ -36,9 +45,9 @@ public class CameraScript : MonoBehaviour
         audioSource.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
         float mean = spectrum[1];
 
-        float bloomModifier = mean;
-        for (int i = 0; i < meanHistory.Length; i++) { bloomModifier += meanHistory[i]; }
-        bloomLayer.intensity.value = 5f * (1f + bloomModifier * 0.25f);
+        meanMultiplier = bloomMultiplier / Math.Max(bloomSmoothness, 2);
+        float bloomModifier = (mean + meanHistory.Sum()) * meanMultiplier;
+        bloomLayer.intensity.value = bloomMinimum + bloomModifier;
 
         for (int i = 0; i < meanHistory.Length - 1; i++) { meanHistory[i] = meanHistory[i + 1]; }
         meanHistory[meanHistory.Length - 1] = mean;

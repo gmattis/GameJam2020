@@ -145,6 +145,8 @@ public class RoomScript : MonoBehaviour
                 gameObject.GetComponent<RoomScript>().enabled = false;
             }
         }
+
+        GameManager.Instance.playerState = PlayerState.Fight;
     }
 
     public void Focused()
